@@ -286,6 +286,10 @@ void ImpressionistUI::cb_brushChoice(Fl_Widget* o, void* v)
 		pDoc->m_pUI->m_BrushWidthSlider->deactivate();
 		pDoc->m_pUI->m_BrushAngleSlider->deactivate();
 	}
+	if (type == BRUSH_SPLINES)
+	{
+		pDoc->m_pUI->m_BrushWidthSlider->activate();
+	}
 	pDoc->setBrushType(type);
 }
 
@@ -512,6 +516,7 @@ Fl_Menu_Item ImpressionistUI::brushTypeMenu[NUM_BRUSH_TYPE+1] = {
   {"Points",			FL_ALT+'p', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_POINTS},
   {"Lines",				FL_ALT+'l', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_LINES},
   {"Circles",			FL_ALT+'c', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_CIRCLES},
+  {"Splines",			FL_ALT + 's', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_SPLINES },
   {"Scattered Points",	FL_ALT+'q', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_SCATTERED_POINTS},
   {"Scattered Lines",	FL_ALT+'m', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_SCATTERED_LINES},
   {"Scattered Circles",	FL_ALT+'d', (Fl_Callback *)ImpressionistUI::cb_brushChoice, (void *)BRUSH_SCATTERED_CIRCLES},

@@ -1,3 +1,21 @@
-﻿  impressionistDoc.cpp
-e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistdoc.cpp(166): warning C4715: 'ImpressionistDoc::getAngle' : not all control paths return a value
+﻿  splineBrush.cpp
+  impressionistUI.cpp
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1156): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1177): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1182): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1187): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1194): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1214): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1218): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+e:\kaivan wadia\desktop\cs 384g computer graphics\project 1\impressionist\impressionistui.cpp(1222): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(937) : see declaration of 'itoa'
+  Generating Code...
+c:\program files (x86)\microsoft visual studio 12.0\vc\include\math.h(558): warning C4717: '_hypot' : recursive on all control paths, function will cause runtime stack overflow
   impressionist.vcxproj -> E:\Kaivan Wadia\Desktop\CS 384G Computer Graphics\Project 1\impressionist\Debug\impressionist.exe

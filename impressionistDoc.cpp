@@ -22,6 +22,7 @@
 #include "scatteredLineBrush.h"
 #include "filledCircleBrush.h"
 #include "scatteredCircleBrush.h"
+#include "splineBrush.h"
 
 
 #define DESTROY(p)	{  if ((p)!=NULL) {delete [] p; p=NULL; } }
@@ -48,6 +49,7 @@ ImpressionistDoc::ImpressionistDoc()
 	// Note: You should implement these 5 brushes.  They are set the same (PointBrush) for now
 	ImpBrush::c_pBrushes[BRUSH_LINES] = new SingleLineBrush(this, "Lines");
 	ImpBrush::c_pBrushes[BRUSH_CIRCLES]	= new FilledCircleBrush( this, "Circles" );
+	ImpBrush::c_pBrushes[BRUSH_SPLINES] = new SplineBrush(this, "Splines");
 	ImpBrush::c_pBrushes[BRUSH_SCATTERED_POINTS] = new ScatteredPointBrush( this, "Scattered Points" );
 	ImpBrush::c_pBrushes[BRUSH_SCATTERED_LINES]	= new ScatteredLineBrush( this, "Scattered Lines" );
 	ImpBrush::c_pBrushes[BRUSH_SCATTERED_CIRCLES] = new ScatteredCircleBrush( this, "Scattered Circles" );
@@ -161,7 +163,8 @@ int ImpressionistDoc::getAngle(Point target)
 		{
 			angle = angle - 360;
 		}
-		return angle;
+		setAngle(angle);
+		return m_pUI->getAngle();
 	}
 }
 
@@ -435,7 +438,8 @@ void ImpressionistDoc::generateGradientAngles()
 
 float ImpressionistDoc::getGradientAngleAtPoint(Point target)
 {
-	return m_ucGradientAngles[target.x*m_nPaintWidth + target.y];
+	double angle = m_ucGradientAngles[target.x*m_nPaintWidth + target.y] + 90;
+	return angle;
 }
 
 //------------------------------------------------------------------
