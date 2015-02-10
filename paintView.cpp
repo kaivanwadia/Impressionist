@@ -19,6 +19,7 @@
 #define RIGHT_MOUSE_DRAG	5
 #define RIGHT_MOUSE_UP		6
 #define CURSOR_MOVE			7
+#define DRAW_AUTOMATICALLY	8
 
 
 #ifndef WIN32
@@ -52,7 +53,6 @@ void PaintView::draw()
 
 	if(!valid())
 	{
-		printf("In not valid\n");
 		glClearColor(0.7f, 0.7f, 0.7f, 1.0);
 
 		// We're only using 2-D, so turn off depth 
@@ -90,39 +90,33 @@ void PaintView::draw()
 
 	if ( m_pDoc->m_ucPainting && !isAnEvent) 
 	{
-		//printf("In draw extra\n");
 		RestoreContent();
-
 	}
 
-	//if (m_bDrawAutomatically && !isAnEvent)
-	//{
-	//	printf("In Draw automatically\n");
-	//	Point source(0, 0);
-	//	Point target(0, 0);
-	//	m_pDoc->m_pCurrentBrush->BrushBegin(source, target);
-	//	for (int row = 0; row < m_pDoc->m_nPaintHeight; row++)
-	//	{
-	//		for (int column = 0; column < m_pDoc->m_nPaintWidth; column++)
-	//		{
-	//			source.x = column;
-	//			source.y = row;
-	//			target.x = column;
-	//			target.y = row;
-	//			m_pDoc->m_pCurrentBrush->BrushMove(source, target);
-	//		}
-	//	}
-	//	m_pDoc->m_pCurrentBrush->BrushEnd(source, target);
-	//	//isAnEvent = 1;
-	//	//eventToDo = LEFT_MOUSE_UP;
-	//	SaveCurrentContent();
-	//	//m_bDrawAutomatically = false;
-	//	//RestoreContent();
-	//}
-
-	if ( m_pDoc->m_ucPainting && isAnEvent)
+	if (m_bDrawAutomatically)
 	{
-		//printf("In Draw Manual\n");
+		isAnEvent = 0;
+		m_bDrawAutomatically = false;
+		Point source(0, 0);
+		Point target(0, 0);
+		m_pDoc->m_pCurrentBrush->BrushBegin(source, target);
+		for (int row = 0; row < m_pDoc->m_nPaintHeight; row++)
+		{
+			for (int column = 0; column < m_pDoc->m_nPaintWidth; column++)
+			{
+				source.x = column;
+				source.y = row;
+				target.x = column;
+				target.y = row;
+				m_pDoc->m_pCurrentBrush->BrushMove(source, target);
+			}
+		}
+		m_pDoc->m_pCurrentBrush->BrushEnd(source, target);
+		SaveCurrentContent();
+		RestoreContent();
+	}
+	else if ( m_pDoc->m_ucPainting && isAnEvent)
+	{
 		// Clear it after processing.
 		isAnEvent	= 0;	
 
@@ -192,6 +186,13 @@ void PaintView::draw()
 	#endif // !MESA
 }
 
+void PaintView::drawAutomatically()
+{
+	isAnEvent = 1;
+	m_bDrawAutomatically = true;
+	redraw();
+}
+
 
 int PaintView::handle(int event)
 {
@@ -239,9 +240,6 @@ int PaintView::handle(int event)
 		break;
 
 	}
-
-
-
 	return 1;
 }
 

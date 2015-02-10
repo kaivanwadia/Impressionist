@@ -36,7 +36,7 @@ ImpressionistDoc::ImpressionistDoc()
 	m_ucPainting	= NULL;
 	m_ucPreviewBackup = NULL;
 	m_ucPaintingTemp = NULL;
-	m_ucBlurImage = NULL;
+	m_ucGradientAngles = NULL;
 
 
 	// create one instance of each brush
@@ -154,6 +154,15 @@ int ImpressionistDoc::getAngle(Point target)
 		}
 		return m_pUI->getAngle();
 	}
+	else if (m_pCurrentAngle == GRADIENT_ANGLE)
+	{
+		double angle = getGradientAngleAtPoint(target);
+		if (angle > 360)
+		{
+			angle = angle - 360;
+		}
+		return angle;
+	}
 }
 
 void ImpressionistDoc::setAngle(int angle)
@@ -198,7 +207,7 @@ int ImpressionistDoc::loadImage(char *iname)
 	delete [] m_ucPainting;
 	delete [] m_ucPreviewBackup;
 	delete [] m_ucPaintingTemp;
-	delete [] m_ucBlurImage;
+	delete [] m_ucGradientAngles;
 
 	m_ucBitmap		= data;
 
@@ -206,7 +215,7 @@ int ImpressionistDoc::loadImage(char *iname)
 	m_ucPainting		= new unsigned char [width*height*3];
 	m_ucPreviewBackup	= new unsigned char [width*height*3];
 	m_ucPaintingTemp	= new unsigned char [width*height * 3];
-	m_ucBlurImage		= new unsigned char [width*height];
+	m_ucGradientAngles	= new unsigned char [width*height];
 	memset(m_ucPainting, 0, width*height*3);
 
 	m_pUI->m_mainWindow->resize(m_pUI->m_mainWindow->x(), 
@@ -368,11 +377,13 @@ void ImpressionistDoc::applySobelCombinedFilter(const unsigned char* sourceBuffe
 	m_pUI->m_paintView->refresh();
 }
 
-void ImpressionistDoc::generateGrayScaleBlurredImage()
+void ImpressionistDoc::generateGradientAngles()
 {
 	// Convert to grayscale
 	unsigned char*	grayImage;
 	grayImage = new unsigned char[m_nPaintWidth*m_nPaintHeight];
+	unsigned char*	grayBlurImage;
+	grayBlurImage = new unsigned char[m_nPaintWidth*m_nPaintHeight];
 	for (int imageRow = 0; imageRow < m_nPaintHeight; imageRow++)
 	{
 		for (int imageCol = 0; imageCol < m_nPaintWidth; imageCol++)
@@ -399,16 +410,32 @@ void ImpressionistDoc::generateGrayScaleBlurredImage()
 				}
 			}
 			sum = sum/16;
-			m_ucBlurImage[pixelRow*m_nPaintWidth + pixelColumn] = sum;
+			grayBlurImage[pixelRow*m_nPaintWidth + pixelColumn] = sum;
+		}
+	}
+	for (int pixelRow = 0; pixelRow < m_nPaintHeight; pixelRow++)
+	{
+		for (int pixelCol = 0; pixelCol < m_nPaintWidth; pixelCol++)
+		{
+			if (pixelRow < 0 || pixelCol < 0 || pixelRow>m_nPaintHeight || pixelCol>m_nPaintWidth)
+			{
+				continue;
+			}
+			double gradientX = grayBlurImage[(pixelRow*m_nPaintWidth + pixelCol) + 1] - grayBlurImage[(pixelRow*m_nPaintWidth + pixelCol)];
+			double gradientY = grayBlurImage[(pixelRow*m_nPaintWidth + pixelCol)] - grayBlurImage[((pixelRow+1)*m_nPaintWidth + pixelCol)];
+			double angle = atan2(gradientY, gradientX) * 180.0/M_PI;
+			if (angle < 0)
+				angle += 360;
+			m_ucGradientAngles[(pixelRow*m_nPaintWidth + pixelCol)] = angle;
 		}
 	}
 	delete [] grayImage;
+	delete [] grayBlurImage;
 }
 
-float ImpressionistDoc::computeGradientAngleAtPoint(Point target)
+float ImpressionistDoc::getGradientAngleAtPoint(Point target)
 {
-	
-	return 0;
+	return m_ucGradientAngles[target.x*m_nPaintWidth + target.y];
 }
 
 //------------------------------------------------------------------

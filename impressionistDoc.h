@@ -53,8 +53,8 @@ public:
 	void	setAlpha(double alpha);				// set the UI alpha
 	char*	getImageName();					// get the current image name
 
-	float	computeGradientAngleAtPoint(Point target); //get the gradient at a specific point
-	void	generateGrayScaleBlurredImage(); //Compute the gray scaled blurred image for gradient calculations
+	float	getGradientAngleAtPoint(Point target); //get the gradient at a specific point
+	void	generateGradientAngles(); //Compute the gray scaled blurred image for gradient calculations
 	
 
 // Attributes
@@ -73,7 +73,7 @@ public:
 	// preview filters before applying.
 	unsigned char*	m_ucPreviewBackup;
 	unsigned char*	m_ucPaintingTemp;
-	unsigned char*	m_ucBlurImage;
+	unsigned char*	m_ucGradientAngles;
 
 
 

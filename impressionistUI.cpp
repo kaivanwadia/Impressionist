@@ -302,6 +302,10 @@ void ImpressionistUI::cb_angleChoice(Fl_Widget* o, void* v)
 	int type = (int)v;
 
 	pDoc->setAngleType(type);
+	if (type == GRADIENT_ANGLE)
+	{
+		pDoc->generateGradientAngles();
+	}
 }
 
 //------------------------------------------------------------
@@ -353,8 +357,7 @@ void ImpressionistUI::cb_angleSlides(Fl_Widget* o, void* v)
 void ImpressionistUI::cb_draw_automatically(Fl_Widget* o, void* v)
 {
 	ImpressionistUI* pUI = ((ImpressionistUI *)(o->user_data()));
-	pUI->m_paintView->m_bDrawAutomatically = true;
-	pUI->m_paintView->refresh();
+	pUI->m_paintView->drawAutomatically();
 }
 
 //-----------------------------------------------------------
@@ -520,6 +523,7 @@ Fl_Menu_Item ImpressionistUI::angleTypeMenu[NUM_ANGLE_TYPE+1] = {
 	{ "Slider", FL_ALT + 's', (Fl_Callback *)ImpressionistUI::cb_angleChoice, (void *)SLIDER_VALUE },
 	{ "Right Mouse Button", FL_ALT + 'r', (Fl_Callback *)ImpressionistUI::cb_angleChoice, (void *)RIGHT_MOUSE_BUTTON },
 	{ "Cursor Movement", FL_ALT + 'e', (Fl_Callback *)ImpressionistUI::cb_angleChoice, (void *)CURSOR_MOVEMENT },
+	{ "Perpendicular Gradient", FL_ALT + 'e', (Fl_Callback *)ImpressionistUI::cb_angleChoice, (void *)GRADIENT_ANGLE },
 	{ 0 }
 };
 
