@@ -75,7 +75,7 @@ public:
 class ImpBrush 
 {
 protected:
-	ImpBrush::ImpBrush( ImpressionistDoc* pDoc = NULL, const char* name = NULL );
+	ImpBrush( ImpressionistDoc* pDoc = NULL, const char* name = NULL );
 
 public:
 	// The implementation of your brush should realize these virtual functions

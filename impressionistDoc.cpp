@@ -23,6 +23,7 @@
 #include "filledCircleBrush.h"
 #include "scatteredCircleBrush.h"
 #include "splineBrush.h"
+#include <cmath>
 
 
 #define DESTROY(p)	{  if ((p)!=NULL) {delete [] p; p=NULL; } }

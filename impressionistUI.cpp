@@ -14,6 +14,7 @@
 
 #include "impressionistUI.h"
 #include "impressionistDoc.h"
+#include <sstream>
 
 /*
 //------------------------------ Widget Examples -------------------------------------------------
@@ -274,7 +275,7 @@ void ImpressionistUI::cb_brushChoice(Fl_Widget* o, void* v)
 	ImpressionistUI* pUI=((ImpressionistUI *)(o->user_data()));
 	ImpressionistDoc* pDoc=pUI->getDocument();
 
-	int type=(int)v;
+	int type=(long)v;
 
 	if (type == BRUSH_LINES || type == BRUSH_SCATTERED_LINES)
 	{
@@ -303,7 +304,7 @@ void ImpressionistUI::cb_angleChoice(Fl_Widget* o, void* v)
 	ImpressionistUI* pUI = ((ImpressionistUI *)(o->user_data()));
 	ImpressionistDoc* pDoc = pUI->getDocument();
 
-	int type = (int)v;
+	int type = (long)v;
 
 	pDoc->setAngleType(type);
 	if (type == GRADIENT_ANGLE)
@@ -865,7 +866,6 @@ void ImpressionistUI::cb_imageChoiceButton(Fl_Widget* o, void* v)
 void ImpressionistUI::cb_divideByInput(Fl_Widget* o, void* v)
 {
 	((ImpressionistUI*)(o->user_data()))->scale = atoi(((Fl_Input *)o)->value());
-	//printf("Scale : %d\n", ((ImpressionistUI*)(o->user_data()))->scale);
 }
 
 // ---------------------------
@@ -1017,7 +1017,7 @@ void ImpressionistUI::cb_filterTypeChoice(Fl_Widget* o, void* v)
 {
 	ImpressionistUI* pUI = ((ImpressionistUI *)(o->user_data()));
 
-	int type = (int)v;
+	int type = (long)v;
 	pUI->updateFilterGroupUsingFilterType(type);
 }
 
@@ -1068,7 +1068,7 @@ void ImpressionistUI::cb_filterSizeChoice(Fl_Widget* o, void* v)
 {
 	ImpressionistUI* pUI = ((ImpressionistUI *)(o->user_data()));
 
-	int type = (int)v;
+	int type = (long)v;
 	pUI->updateFilterGroupUsingSizeType(type);
 }
 
@@ -1152,8 +1152,9 @@ void ImpressionistUI::updateFilterGroupToMeanFilter()
 			((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value("1");
 		}
 	}
-	char str[3] = "";
-	this->m_divideByInput->value(itoa(this->m_filterSize*this->m_filterSize, str, 10));
+	std::stringstream str;
+	str<<(this->m_filterSize*this->m_filterSize);
+	this->m_divideByInput->value(str.str().c_str());
 	this->m_offsetInput->value("0");
 	this->scale = this->m_filterSize*this->m_filterSize;
 	this->offset = 0;
@@ -1174,24 +1175,31 @@ void ImpressionistUI::updateFilterGroupToGaussianFilter()
 			char str[5];
 			if (this->m_filterSize == 3)
 			{
-				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(itoa(gaussianFilter3x3[count], str, 10));
+				std::stringstream str;
+				str<<(gaussianFilter3x3[count]);
+				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
 				tempScale += gaussianFilter3x3[count];
 			}
 			else if (this->m_filterSize == 5)
 			{
-				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(itoa(gaussianFilter5x5[count], str, 10));
+				std::stringstream str;
+				str<<(gaussianFilter5x5[count]);
+				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
 				tempScale += gaussianFilter3x3[count];
 			}
 			else if (this->m_filterSize == 7)
 			{
-				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(itoa(gaussianFilter7x7[count], str, 10));
+				std::stringstream str;
+				str<<(gaussianFilter7x7[count]);
+				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
 				tempScale += gaussianFilter3x3[count];
 			}
 			count++;
 		}
 	}
-	char scale[6];
-	this->m_divideByInput->value(itoa(tempScale, scale, 10));
+	std::stringstream scale;
+	scale<<tempScale;
+	this->m_divideByInput->value(scale.str().c_str());
 	this->m_offsetInput->value("0");
 	this->scale = tempScale;
 	this->offset = 0;
@@ -1211,15 +1219,21 @@ void ImpressionistUI::updateFilterGroupToLaplacianFilter()
 			char str[5];
 			if (this->m_filterSize == 3)
 			{
-				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(itoa(laplacianFilter3x3[count], str, 10));
+				std::stringstream str;
+				str<<(laplacianFilter3x3[count]);
+				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
 			}
 			else if (this->m_filterSize == 5)
 			{
-				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(itoa(laplacianFilter5x5[count], str, 10));
+				std::stringstream str;
+				str<<(laplacianFilter5x5[count]);
+				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
 			}
 			else if (this->m_filterSize == 7)
 			{
-				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(itoa(laplacianFilter7x7[count], str, 10));
+				std::stringstream str;
+				str<<(laplacianFilter7x7[count]);
+				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
 			}
 			count++;
 		}
@@ -1239,7 +1253,7 @@ void ImpressionistUI::cb_sobelFilterChoice(Fl_Widget* o, void* v)
 {
 	ImpressionistUI* pUI = ((ImpressionistUI *)(o->user_data()));
 
-	int type = (int)v;
+	int type = (long)v;
 	pUI->sobelFilterType = type;
 }
 
