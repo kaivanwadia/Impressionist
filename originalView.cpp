@@ -75,9 +75,23 @@ void OriginalView::draw()
 		glDrawBuffer( GL_BACK );
 		glDrawPixels( drawWidth, drawHeight, GL_RGB, GL_UNSIGNED_BYTE, bitstart );
 
+		glColor3f(0, 1, 0);
+		glBegin(GL_QUADS);
+		glVertex2d(m_redDotPoint.x - 3, m_redDotPoint.y - 3);
+		glVertex2d(m_redDotPoint.x + 3, m_redDotPoint.y - 3);
+		glVertex2d(m_redDotPoint.x + 3, m_redDotPoint.y + 3);
+		glVertex2d(m_redDotPoint.x - 3, m_redDotPoint.y + 3);
+		glEnd();
+
 	}
 			
 	glFlush();
+}
+
+void OriginalView::drawRedDotAtPoint(Point target)
+{
+	m_redDotPoint = target;
+	redraw();
 }
 
 void OriginalView::refresh()

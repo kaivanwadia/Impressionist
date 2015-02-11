@@ -29,12 +29,14 @@ public:
 	void refresh();
 
 	void resizeWindow(int width, int height);
+	void drawRedDotAtPoint(Point target);
 
 	ImpressionistDoc*	m_pDoc;
 
 private:
 	int	m_nWindowWidth, 
 		m_nWindowHeight;
+	Point m_redDotPoint;
 
 };
 
