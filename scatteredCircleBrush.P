@@ -1,29 +1,28 @@
-scatteredCircleBrush.o scatteredCircleBrush.P : scatteredCircleBrush.cpp impressionistDoc.h \
- impressionist.h /usr/include/stdio.h /usr/include/features.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h \
+scatteredCircleBrush.o scatteredCircleBrush.P : scatteredCircleBrush.cpp \
+ /usr/include/stdc-predef.h impressionistDoc.h impressionist.h \
+ /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /p/graft/fltk-1.1.10/include/FL/Fl.H \
- /p/graft/fltk-1.1.10/include/FL/Enumerations.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Export.H \
- /p/graft/fltk-1.1.10/include/FL/gl.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/FL/Fl.H \
+ /usr/include/FL/Enumerations.H /usr/include/FL/Fl_Export.H \
+ /usr/include/FL/gl.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/inttypes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/GL/glu.h \
  impBrush.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
- /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/xlocale.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/xlocale.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/time.h \
  /usr/include/x86_64-linux-gnu/sys/select.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
@@ -31,57 +30,39 @@ scatteredCircleBrush.o scatteredCircleBrush.P : scatteredCircleBrush.cpp impress
  /usr/include/x86_64-linux-gnu/bits/time.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
- bitmap.h /usr/include/string.h impressionistUI.h \
- /p/graft/fltk-1.1.10/include/FL/Fl_Window.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Group.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Widget.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_File_Chooser.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Double_Window.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Window.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Group.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Choice.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Menu_.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Menu_Item.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Image.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Menu_Button.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Button.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Preferences.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Tile.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_File_Browser.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Browser.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Browser_.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Scrollbar.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Slider.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Valuator.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_File_Icon.H \
- /p/graft/fltk-1.1.10/include/FL/Fl.H \
- /p/graft/fltk-1.1.10/include/FL/filename.H /usr/include/dirent.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h bitmap.h \
+ /usr/include/string.h impressionistUI.h /usr/include/FL/Fl_Window.H \
+ /usr/include/FL/Fl_Group.H /usr/include/FL/Fl_Widget.H \
+ /usr/include/FL/Fl_File_Chooser.H /usr/include/FL/Fl_Double_Window.H \
+ /usr/include/FL/Fl_Window.H /usr/include/FL/Fl_Group.H \
+ /usr/include/FL/Fl_Choice.H /usr/include/FL/Fl_Menu_.H \
+ /usr/include/FL/Fl_Menu_Item.H /usr/include/FL/Fl_Image.H \
+ /usr/include/FL/Fl_Menu_Button.H /usr/include/FL/Fl_Button.H \
+ /usr/include/FL/Fl_Preferences.H /usr/include/FL/Fl_Tile.H \
+ /usr/include/FL/Fl_File_Browser.H /usr/include/FL/Fl_Browser.H \
+ /usr/include/FL/Fl_Browser_.H /usr/include/FL/Fl_Scrollbar.H \
+ /usr/include/FL/Fl_Slider.H /usr/include/FL/Fl_Valuator.H \
+ /usr/include/FL/Fl_File_Icon.H /usr/include/FL/Fl.H \
+ /usr/include/FL/filename.H /usr/include/dirent.h \
  /usr/include/x86_64-linux-gnu/bits/dirent.h \
  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h /p/graft/fltk-1.1.10/include/FL/Fl_Box.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Check_Button.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Light_Button.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Button.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_File_Input.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Input.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Input_.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Return_Button.H \
- /p/graft/fltk-1.1.10/include/FL/fl_ask.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Menu_Bar.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Value_Slider.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Light_Button.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Color_Chooser.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Value_Input.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Input.H \
- /p/graft/fltk-1.1.10/include/FL/Fl_Int_Input.H originalView.h \
- /p/graft/fltk-1.1.10/include/FL/Fl_Gl_Window.H paintView.h \
- scatteredCircleBrush.h /usr/include/c++/4.6/cmath \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++config.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/os_defines.h \
- /usr/include/c++/4.6/x86_64-linux-gnu/./bits/cpu_defines.h \
- /usr/include/c++/4.6/bits/cpp_type_traits.h \
- /usr/include/c++/4.6/ext/type_traits.h /usr/include/math.h \
+ /usr/include/linux/limits.h /usr/include/FL/Fl_Box.H \
+ /usr/include/FL/Fl_Check_Button.H /usr/include/FL/Fl_Light_Button.H \
+ /usr/include/FL/Fl_Button.H /usr/include/FL/Fl_File_Input.H \
+ /usr/include/FL/Fl_Input.H /usr/include/FL/Fl_Input_.H \
+ /usr/include/FL/Fl_Return_Button.H /usr/include/FL/fl_ask.H \
+ /usr/include/FL/Fl_Menu_Bar.H /usr/include/FL/Fl_Value_Slider.H \
+ /usr/include/FL/Fl_Light_Button.H /usr/include/FL/Fl_Color_Chooser.H \
+ /usr/include/FL/Fl_Value_Input.H /usr/include/FL/Fl_Input.H \
+ /usr/include/FL/Fl_Int_Input.H originalView.h \
+ /usr/include/FL/Fl_Gl_Window.H paintView.h scatteredCircleBrush.h \
+ /usr/include/c++/4.8/cmath \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/os_defines.h \
+ /usr/include/x86_64-linux-gnu/c++/4.8/bits/cpu_defines.h \
+ /usr/include/c++/4.8/bits/cpp_type_traits.h \
+ /usr/include/c++/4.8/ext/type_traits.h /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/huge_val.h \
  /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
  /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
