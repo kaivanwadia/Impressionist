@@ -760,23 +760,23 @@ ImpressionistUI::ImpressionistUI() {
 		m_DrawAutomatically->user_data((void*)(this));
 		m_DrawAutomatically->callback(cb_draw_automatically);
 
-		m_RandomAngle = new Fl_Light_Button(170, 230, 120, 25, "Random Angle");
+		m_RandomAngle = new Fl_Light_Button(220, 230, 120, 25, "Random Angle");
 		m_RandomAngle->user_data((void*)(this));
 		m_RandomAngle->callback(cb_randomAngle);
 
-		m_RandomSize = new Fl_Light_Button(170, 270, 120, 25, "Random Size");
+		m_RandomSize = new Fl_Light_Button(220, 270, 120, 25, "Random Size");
 		m_RandomSize->user_data((void*)(this));
 		m_RandomSize->callback(cb_randomSize);
 
-		m_SpacingSlider = new Fl_Value_Slider(10, 270, 100, 20, "Spacing");
+		m_SpacingSlider = new Fl_Value_Slider(10, 270, 150, 20, "Spacing");
 		m_SpacingSlider->user_data((void*)(this));	// record self to be used by static callback functions
 		m_SpacingSlider->type(FL_HOR_NICE_SLIDER);
 		m_SpacingSlider->labelfont(FL_COURIER);
 		m_SpacingSlider->labelsize(12);
 		m_SpacingSlider->minimum(1);
-		m_SpacingSlider->maximum(5);
+		m_SpacingSlider->maximum(20);
 		m_SpacingSlider->step(1);
-		m_SpacingSlider->value(1);
+		m_SpacingSlider->value(2);
 		m_SpacingSlider->align(FL_ALIGN_RIGHT);
 		m_SpacingSlider->callback(cb_spacingSlides);
 
