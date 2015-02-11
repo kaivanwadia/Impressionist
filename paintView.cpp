@@ -11,6 +11,7 @@
 #include "impBrush.h"
 #include <cmath>
 
+extern float frand();
 
 #define LEFT_MOUSE_DOWN		1
 #define LEFT_MOUSE_DRAG		2
@@ -96,14 +97,30 @@ void PaintView::draw()
 	if (m_bDrawAutomatically)
 	{
 		isAnEvent = 0;
-		m_bDrawAutomatically = false;
 		Point source(0, 0);
 		Point target(0, 0);
+		int count = 0;
 		m_pDoc->m_pCurrentBrush->BrushBegin(source, target);
 		for (int row = 0; row < m_pDoc->m_nPaintHeight; row++)
 		{
 			for (int column = 0; column < m_pDoc->m_nPaintWidth; column++)
 			{
+				if (count != 0)
+				{
+					count--;
+					continue;
+				}
+				if (m_pDoc->getRandomSize())
+				{
+					int size = frand() * 39 + 1;
+					m_pDoc->setSize(size);
+				}
+				if (m_pDoc->getRandomAngle())
+				{
+					int angle = frand() * 359 + 1;
+					m_pDoc->setAngle(angle);
+				}
+				count = m_pDoc->getSpacing();
 				source.x = column;
 				source.y = row;
 				target.x = column;
@@ -112,6 +129,7 @@ void PaintView::draw()
 			}
 		}
 		m_pDoc->m_pCurrentBrush->BrushEnd(source, target);
+		m_bDrawAutomatically = false;
 		SaveCurrentContent();
 		RestoreContent();
 	}

@@ -52,6 +52,12 @@ public:
 	float	getAlpha();						// get the UI alpha
 	void	setAlpha(double alpha);				// set the UI alpha
 	char*	getImageName();					// get the current image name
+	int		getSpacing();
+	void	setSpacing(int spacing);
+	bool	getRandomAngle();
+	void	setRandomAngle(bool angle);
+	bool	getRandomSize();
+	void	setRandomSize(bool size);
 
 	float	getGradientAngleAtPoint(Point target); //get the gradient at a specific point
 	void	generateGradientAngles(); //Compute the gray scaled blurred image for gradient calculations

@@ -61,6 +61,9 @@ public:
 	Fl_Slider*			m_BrushAlphaSlider;
 	Fl_Button*          m_ClearCanvasButton;
 	Fl_Button*			m_DrawAutomatically;
+	Fl_Light_Button*	m_RandomAngle;
+	Fl_Light_Button*	m_RandomSize;
+	Fl_Slider*			m_SpacingSlider;
 
 	//For Filter kernel
 	Fl_Window*			m_filterKernelDialog;
@@ -95,6 +98,12 @@ public:
 	void				setAngle(int angle);
 	double				getAlpha();
 	void				setAlpha(double alpha);
+	int					getSpacing();
+	void				setSpacing(int spacing);
+	bool				getRandomAngle();
+	void				setRandomAngle(bool angle);
+	bool				getRandomSize();
+	void				setRandomSize(bool size);
 
 	// Interface to get filter kernel attributes
 	double				getScale();
@@ -128,6 +137,9 @@ private:
 	bool	m_bPreviewMode;
 	int		m_filterSize;
 	bool	m_applyOnPainting;
+	bool	m_bRandomAngle;
+	bool	m_bRandomSize;
+	int		m_nSpacing;
 
 	// These attributes are set by the filter kernel UI
 	int		sobelFilterType;
@@ -165,6 +177,9 @@ private:
 	static void	cb_angleSlides(Fl_Widget* o, void* v);
 	static void	cb_alphaSlides(Fl_Widget* o, void* v);
 	static void	cb_draw_automatically(Fl_Widget* o, void* v);
+	static void cb_randomAngle(Fl_Widget* o, void* v);
+	static void cb_randomSize(Fl_Widget* o, void* v);
+	static void	cb_spacingSlides(Fl_Widget* o, void* v);
 
 	//Filter Kernel Callbacks
 	static void	cb_filter_kernel(Fl_Menu_* o, void* v);

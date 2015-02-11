@@ -174,6 +174,54 @@ void ImpressionistDoc::setAngle(int angle)
 	m_pUI->setAngle(angle);
 }
 
+//------------------------------------------------
+// Return the spacing for automatic drawing
+//------------------------------------------------
+int ImpressionistDoc::getSpacing()
+{
+	return m_pUI->getSpacing();
+}
+
+//-------------------------------------------------
+// Set the spacing for automatic drawing
+//-------------------------------------------------
+void ImpressionistDoc::setSpacing(int spacing)
+{
+	m_pUI->setSpacing(spacing);
+}
+
+//------------------------------------------------
+// Return the random angle boolean
+//------------------------------------------------
+bool ImpressionistDoc::getRandomAngle()
+{
+	return m_pUI->getRandomAngle();
+}
+
+//-------------------------------------------------
+// Set the random angle boolean
+//-------------------------------------------------
+void ImpressionistDoc::setRandomAngle(bool angle)
+{
+	m_pUI->setRandomAngle(angle);
+}
+
+//------------------------------------------------
+// Return the random size boolean
+//------------------------------------------------
+bool ImpressionistDoc::getRandomSize()
+{
+	return m_pUI->getRandomSize();
+}
+
+//-------------------------------------------------
+// Set the random size boolean
+//-------------------------------------------------
+void ImpressionistDoc::setRandomSize(bool size)
+{
+	m_pUI->setRandomSize(size);
+}
+
 //---------------------------------------------------------
 // Returns the size of the brush.
 //---------------------------------------------------------
