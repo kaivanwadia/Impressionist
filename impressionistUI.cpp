@@ -1285,14 +1285,14 @@ void ImpressionistUI::updateFilterGroupToGaussianFilter()
 				std::stringstream str;
 				str<<(gaussianFilter5x5[count]);
 				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
-				tempScale += gaussianFilter3x3[count];
+				tempScale += gaussianFilter5x5[count];
 			}
 			else if (this->m_filterSize == 7)
 			{
 				std::stringstream str;
 				str<<(gaussianFilter7x7[count]);
 				((Fl_Input *)this->m_filterKernelGroup->array()[filterNo])->value(str.str().c_str());
-				tempScale += gaussianFilter3x3[count];
+				tempScale += gaussianFilter7x7[count];
 			}
 			count++;
 		}
