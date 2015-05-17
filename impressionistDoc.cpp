@@ -373,6 +373,10 @@ void ImpressionistDoc::applyFilter( const unsigned char* sourceBuffer,
 				{
 					int tempPixelRow = pixelRow - knlHeight/2 + filterRow;
 					int tempPixelColumn = pixelColumn - knlWidth/2 + filterColumn;
+					if (tempPixelRow < 0 || tempPixelColumn < 0 || tempPixelRow>m_nPaintHeight || tempPixelColumn>m_nPaintWidth)
+					{
+						continue;
+					}
 					sumRed = sumRed + filterKernel[knlWidth * filterRow + filterColumn] * sourceBuffer[3 * (tempPixelRow*srcBufferWidth + tempPixelColumn) + 0];
 					sumGreen = sumGreen + filterKernel[knlWidth * filterRow + filterColumn] * sourceBuffer[3 * (tempPixelRow*srcBufferWidth + tempPixelColumn) + 1];
 					sumBlue = sumBlue + filterKernel[knlWidth * filterRow + filterColumn] * sourceBuffer[3 * (tempPixelRow*srcBufferWidth + tempPixelColumn) + 2];
@@ -409,6 +413,10 @@ void ImpressionistDoc::applySobelCombinedFilter(const unsigned char* sourceBuffe
 				{
 					int tempPixelRow = pixelRow - knlHeight / 2 + filterRow;
 					int tempPixelColumn = pixelColumn - knlWidth / 2 + filterColumn;
+					if (tempPixelRow < 0 || tempPixelColumn < 0 || tempPixelRow>m_nPaintHeight || tempPixelColumn>m_nPaintWidth)
+					{
+						continue;
+					}
 					sumRedH = sumRedH + filterKernelHorizontal[knlWidth * filterRow + filterColumn] * sourceBuffer[3 * (tempPixelRow*srcBufferWidth + tempPixelColumn) + 0];
 					sumGreenH = sumGreenH + filterKernelHorizontal[knlWidth * filterRow + filterColumn] * sourceBuffer[3 * (tempPixelRow*srcBufferWidth + tempPixelColumn) + 1];
 					sumBlueH = sumBlueH + filterKernelHorizontal[knlWidth * filterRow + filterColumn] * sourceBuffer[3 * (tempPixelRow*srcBufferWidth + tempPixelColumn) + 2];
@@ -458,6 +466,10 @@ void ImpressionistDoc::generateGradientAngles()
 				{
 					int tempPixelRow = pixelRow - knlHeight / 2 + filterRow;
 					int tempPixelColumn = pixelColumn - knlWidth / 2 + filterColumn;
+					if (tempPixelRow < 0 || tempPixelColumn < 0 || tempPixelRow>m_nPaintHeight || tempPixelColumn>m_nPaintWidth)
+					{
+						continue;
+					}
 					sum = sum + blurFilter[knlWidth * filterRow + filterColumn] * grayImage[tempPixelRow*m_nPaintWidth + tempPixelColumn];
 				}
 			}
